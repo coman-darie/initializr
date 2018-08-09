@@ -291,16 +291,6 @@ public class ProjectRequest extends BasicProjectRequest {
 	}
 
 	/**
-	 * Add a default dependency if the project does not define any dependency.
-	 */
-	protected void addDefaultDependency() {
-		Dependency root = new Dependency();
-		root.setId(DEFAULT_STARTER);
-		root.asSpringBootStarter("");
-		this.resolvedDependencies.add(root);
-	}
-
-	/**
 	 * Specify if this request has the web facet enabled.
 	 * @return {@code true} if the project has the web facet
 	 */
