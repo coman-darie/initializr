@@ -121,13 +121,18 @@ $(function () {
     else {
         $(".btn-primary").append("<kbd>alt + &#9166;</kbd>");
     }
-
+    var depIds = ["web", "actuator", "cloud-config-client", "configuration-processor", "cloud-hystrix"];
     var refreshDependencies = function (versionRange) {
         var versions = new Versions();
         $("#dependencies div.checkbox").each(function (idx, item) {
             if (!$(item).attr('data-range') || versions.matchRange($(item).attr('data-range'))(versionRange)) {
                 $("input", item).removeAttr("disabled");
                 $(item).removeClass("disabled has-error");
+
+                if (depIds.indexOf($("input", item).attr("value")) != -1) {
+                    $("input", item).prop('checked', true);
+                    $("input", item).attr("disabled", true);
+                }
             } else {
                 $("input", item).prop('checked', false);
                 $(item).addClass("disabled has-error");
@@ -233,8 +238,10 @@ $(function () {
     $('#autocomplete').bind('typeahead:select', function (ev, suggestion) {
         var alreadySelected = $("#dependencies input[value='" + suggestion.id + "']").prop('checked');
         if(alreadySelected) {
-            removeTag(suggestion.id);
-            $("#dependencies input[value='" + suggestion.id + "']").prop('checked', false);
+            if (depIds.indexOf(suggestion.id) == -1) {
+                removeTag(suggestion.id);
+                $("#dependencies input[value='" + suggestion.id + "']").prop('checked', false);
+            }
         }
         else {
             addTag(suggestion.id, suggestion.name);
