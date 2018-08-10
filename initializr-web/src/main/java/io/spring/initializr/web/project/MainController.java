@@ -263,7 +263,7 @@ public class MainController extends AbstractInitializrController {
 				"build.gradle");
 	}
 
-	@RequestMapping("/starter.zip")
+	@RequestMapping("/chassis-starter.zip")
 	@ResponseBody
 	public ResponseEntity<byte[]> springZip(BasicProjectRequest basicRequest)
 			throws IOException {

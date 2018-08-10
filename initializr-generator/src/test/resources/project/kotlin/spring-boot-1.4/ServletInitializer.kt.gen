@@ -1,4 +1,4 @@
-package com.finastra.chassis.starter
+package com.finastra.chassis.chassisstarter
 
 import org.springframework.boot.builder.SpringApplicationBuilder
 import org.springframework.boot.web.support.SpringBootServletInitializer
@@ -6,7 +6,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer
 class ServletInitializer : SpringBootServletInitializer() {
 
 	override fun configure(application: SpringApplicationBuilder) : SpringApplicationBuilder {
-		return application.sources(StarterApplication::class.java)
+		return application.sources(ChassisStarterApplication::class.java)
 	}
 
 }

@@ -267,7 +267,8 @@ public class ProjectRequestTests {
 		request.setGroupId(null);
 		request.setArtifactId("foo");
 		request.resolve(this.metadata);
-		assertThat(request.getPackageName()).isEqualTo("com.finastra.chassis.starter");
+		assertThat(request.getPackageName())
+				.isEqualTo("com.finastra.chassis.chassisstarter");
 	}
 
 	@Test
@@ -276,7 +277,8 @@ public class ProjectRequestTests {
 		request.setGroupId("org.acme");
 		request.setArtifactId(null);
 		request.resolve(this.metadata);
-		assertThat(request.getPackageName()).isEqualTo("com.finastra.chassis.starter");
+		assertThat(request.getPackageName())
+				.isEqualTo("com.finastra.chassis.chassisstarter");
 	}
 
 	@Test

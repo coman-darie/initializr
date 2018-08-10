@@ -5,7 +5,7 @@
       "templated": true
     },
     "maven-project": {
-      "href": "https://@host@/starter.zip?type=maven-project{&dependencies,packaging,javaVersion,language,bootVersion,groupId,artifactId,version,name,description,packageName}",
+      "href": "https://@host@/chassis-starter.zip?type=maven-project{&dependencies,packaging,javaVersion,language,bootVersion,groupId,artifactId,version,name,description,packageName}",
       "templated": true
     },
     "gradle-build": {
@@ -13,7 +13,7 @@
       "templated": true
     },
     "gradle-project": {
-      "href": "https://@host@/starter.zip?type=gradle-project{&dependencies,packaging,javaVersion,language,bootVersion,groupId,artifactId,version,name,description,packageName}",
+      "href": "https://@host@/chassis-starter.zip?type=gradle-project{&dependencies,packaging,javaVersion,language,bootVersion,groupId,artifactId,version,name,description,packageName}",
       "templated": true
     }
   },
@@ -73,7 +73,7 @@
       {
         "id": "maven-project",
         "name": "Maven Project",
-        "action": "/starter.zip",
+        "action": "/chassis-starter.zip",
         "tags": {
           "build": "maven",
           "format": "project"
@@ -91,7 +91,7 @@
       {
         "id": "gradle-project",
         "name": "Gradle Project",
-        "action": "/starter.zip",
+        "action": "/chassis-starter.zip",
         "tags": {
           "build": "gradle",
           "format": "project"
@@ -173,7 +173,7 @@
   },
   "artifactId": {
     "type": "text",
-    "default": "starter"
+    "default": "chassis-starter"
   },
   "version": {
     "type": "text",
@@ -181,7 +181,7 @@
   },
   "name": {
     "type": "text",
-    "default": "starter"
+    "default": "chassis-starter"
   },
   "description": {
     "type": "text",

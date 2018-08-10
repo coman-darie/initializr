@@ -151,8 +151,8 @@ public class ProjectGenerationSmokeTests
 		HomePage page = toHome();
 		page.groupId("org.foo");
 		page.submit();
-		zipProjectAssert(from("demo.zip")).hasBaseDir("starter")
-				.isJavaProject("org.foo.demo", "StarterApplication");
+		zipProjectAssert(from("demo.zip")).hasBaseDir("chassis-starter")
+				.isJavaProject("org.foo.demo", "ChassisStarterApplication");
 	}
 
 	@Test
@@ -179,7 +179,7 @@ public class ProjectGenerationSmokeTests
 		page.language("groovy");
 		page.submit();
 		ProjectAssert projectAssert = zipProjectAssert(from("demo.zip"));
-		projectAssert.hasBaseDir("starter").isMavenProject().isGroovyProject()
+		projectAssert.hasBaseDir("chassis-starter").isMavenProject().isGroovyProject()
 				.hasStaticAndTemplatesResources(false).pomAssert().hasDependenciesCount(3)
 				.hasSpringBootStarterTest()
 				.hasDependency("org.codehaus.groovy", "groovy");
@@ -191,7 +191,7 @@ public class ProjectGenerationSmokeTests
 		page.language("kotlin");
 		page.submit();
 		ProjectAssert projectAssert = zipProjectAssert(from("demo.zip"));
-		projectAssert.hasBaseDir("starter").isMavenProject().isKotlinProject()
+		projectAssert.hasBaseDir("chassis-starter").isMavenProject().isKotlinProject()
 				.hasStaticAndTemplatesResources(false).pomAssert().hasDependenciesCount(4)
 				.hasSpringBootStarterTest()
 				.hasDependency("org.jetbrains.kotlin", "kotlin-stdlib-jdk8")
@@ -205,7 +205,7 @@ public class ProjectGenerationSmokeTests
 		page.packaging("war");
 		page.submit();
 		ProjectAssert projectAssert = zipProjectAssert(from("demo.zip"));
-		projectAssert.hasBaseDir("starter").isMavenProject().isJavaWarProject()
+		projectAssert.hasBaseDir("chassis-starter").isMavenProject().isJavaWarProject()
 				.pomAssert().hasPackaging("war").hasDependenciesCount(3)
 				.hasSpringBootStarterDependency("web") // Added with war packaging
 				.hasSpringBootStarterTomcat().hasSpringBootStarterTest();
@@ -316,7 +316,7 @@ public class ProjectGenerationSmokeTests
 		assertThat(page.value("packageName")).isEqualTo("com.finastra.chassis.acme");
 		page.submit();
 		ProjectAssert projectAssert = zipProjectAssert(from("demo.zip"));
-		projectAssert.hasBaseDir("starter").isMavenProject()
+		projectAssert.hasBaseDir("chassis-starter").isMavenProject()
 				.isGroovyProject("com.finastra.chassis.acme",
 						ProjectAssert.DEFAULT_APPLICATION_NAME)
 				.hasStaticAndTemplatesResources(false).pomAssert().hasDependenciesCount(3)
@@ -361,8 +361,8 @@ public class ProjectGenerationSmokeTests
 	}
 
 	private ProjectAssert assertSimpleProject() throws Exception {
-		return zipProjectAssert(from("demo.zip")).hasBaseDir("starter").isJavaProject()
-				.hasStaticAndTemplatesResources(false);
+		return zipProjectAssert(from("demo.zip")).hasBaseDir("chassis-starter")
+				.isJavaProject().hasStaticAndTemplatesResources(false);
 	}
 
 	private void selectDependency(HomePage page, String text) {

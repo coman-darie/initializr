@@ -124,7 +124,7 @@ public final class InitializrMetadataBuilder {
 	 */
 	protected void applyDefaults(InitializrMetadata metadata) {
 		if (!StringUtils.hasText(metadata.getName().getContent())) {
-			metadata.getName().setContent("starter");
+			metadata.getName().setContent("chassis-starter");
 		}
 		if (!StringUtils.hasText(metadata.getDescription().getContent())) {
 			metadata.getDescription().setContent("Demo project for Chassis application");

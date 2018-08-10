@@ -66,7 +66,8 @@ public class MainControllerStatsIntegrationTests
 
 	@Test
 	public void simpleProject() {
-		downloadArchive("/starter.zip?groupId=com.foo&artifactId=bar&dependencies=web");
+		downloadArchive(
+				"/chassis-starter.zip?groupId=com.foo&artifactId=bar&dependencies=web");
 		assertThat(this.statsMockController.stats).as("No stat got generated").hasSize(1);
 		StatsMockController.Content content = this.statsMockController.stats.get(0);
 
@@ -80,7 +81,7 @@ public class MainControllerStatsIntegrationTests
 
 	@Test
 	public void authorizationHeaderIsSet() {
-		downloadArchive("/starter.zip");
+		downloadArchive("/chassis-starter.zip");
 		assertThat(this.statsMockController.stats).as("No stat got generated").hasSize(1);
 		StatsMockController.Content content = this.statsMockController.stats.get(0);
 
@@ -95,7 +96,8 @@ public class MainControllerStatsIntegrationTests
 
 	@Test
 	public void requestIpNotSetByDefault() {
-		downloadArchive("/starter.zip?groupId=com.foo&artifactId=bar&dependencies=web");
+		downloadArchive(
+				"/chassis-starter.zip?groupId=com.foo&artifactId=bar&dependencies=web");
 		assertThat(this.statsMockController.stats).as("No stat got generated").hasSize(1);
 		StatsMockController.Content content = this.statsMockController.stats.get(0);
 
@@ -106,7 +108,8 @@ public class MainControllerStatsIntegrationTests
 
 	@Test
 	public void requestIpIsSetWhenHeaderIsPresent() throws Exception {
-		RequestEntity<?> request = RequestEntity.get(new URI(createUrl("/starter.zip")))
+		RequestEntity<?> request = RequestEntity
+				.get(new URI(createUrl("/chassis-starter.zip")))
 				.header("X-FORWARDED-FOR", "10.0.0.123").build();
 		getRestTemplate().exchange(request, String.class);
 		assertThat(this.statsMockController.stats).as("No stat got generated").hasSize(1);
@@ -119,7 +122,8 @@ public class MainControllerStatsIntegrationTests
 
 	@Test
 	public void requestIpv4IsNotSetWhenHeaderHasGarbage() throws Exception {
-		RequestEntity<?> request = RequestEntity.get(new URI(createUrl("/starter.zip")))
+		RequestEntity<?> request = RequestEntity
+				.get(new URI(createUrl("/chassis-starter.zip")))
 				.header("x-forwarded-for", "foo-bar").build();
 		getRestTemplate().exchange(request, String.class);
 		assertThat(this.statsMockController.stats).as("No stat got generated").hasSize(1);
@@ -133,7 +137,8 @@ public class MainControllerStatsIntegrationTests
 
 	@Test
 	public void requestCountryIsNotSetWhenHeaderIsSetToXX() throws Exception {
-		RequestEntity<?> request = RequestEntity.get(new URI(createUrl("/starter.zip")))
+		RequestEntity<?> request = RequestEntity
+				.get(new URI(createUrl("/chassis-starter.zip")))
 				.header("cf-ipcountry", "XX").build();
 		getRestTemplate().exchange(request, String.class);
 		assertThat(this.statsMockController.stats).as("No stat got generated").hasSize(1);
@@ -148,7 +153,7 @@ public class MainControllerStatsIntegrationTests
 	@Test
 	public void invalidProjectSillHasStats() {
 		try {
-			downloadArchive("/starter.zip?type=invalid-type");
+			downloadArchive("/chassis-starter.zip?type=invalid-type");
 			fail("Should have failed to generate project with invalid type");
 		}
 		catch (HttpClientErrorException ex) {
@@ -159,7 +164,7 @@ public class MainControllerStatsIntegrationTests
 
 		JsonNode json = parseJson(content.json);
 		assertThat(json.get("groupId").textValue()).isEqualTo("com.finastra.chassis");
-		assertThat(json.get("artifactId").textValue()).isEqualTo("starter");
+		assertThat(json.get("artifactId").textValue()).isEqualTo("chassis-starter");
 		assertThat(json.get("invalid").booleanValue()).isEqualTo(true);
 		assertThat(json.get("invalidType").booleanValue()).isEqualTo(true);
 		assertThat(json.get("errorMessage")).isNotNull();
@@ -170,7 +175,7 @@ public class MainControllerStatsIntegrationTests
 	public void errorPublishingStatsDoesNotBubbleUp() {
 		this.statsProperties.getElastic()
 				.setUri("http://localhost:" + this.port + "/elastic-error");
-		downloadArchive("/starter.zip");
+		downloadArchive("/chassis-starter.zip");
 		assertThat(this.statsMockController.stats).as("No stat should be available")
 				.isEmpty();
 	}

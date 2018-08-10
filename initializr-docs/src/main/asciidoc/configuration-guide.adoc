@@ -156,7 +156,7 @@ By default, Spring Initializr exposes the following resources (all accessed via 
 
 * `/pom.xml` generate a Maven `pom.xml`
 * `/build.gradle` generate a Gradle build
-* `/starter.zip` generate a complete project structure archived in a zip
+* `/chassis-starter.zip` generate a complete project structure archived in a zip
 * `/starter.tgz` generate a complete project structure archived in a tgz
 
 Each type also defines one or more *tags* that provides additional metadata entries to
@@ -184,7 +184,7 @@ project:
 			build: maven
 			format: project
 		  default: true
-		  action: /starter.zip
+		  action: /chassis-starter.zip
 		- name: Gradle Project
 		  id: gradle-project
 		  description: Generate a Gradle based project archive
@@ -192,7 +192,7 @@ project:
 			build: gradle
 			format: project
 		  default: false
-		  action: /starter.zip
+		  action: /chassis-starter.zip
 ----
 
 NOTE: If you intend to build a custom client against your service, you can add as many

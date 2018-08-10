@@ -46,7 +46,7 @@ public class LegacyStsControllerIntegrationTests
 	@Test
 	public void legacyStsHome() {
 		String body = htmlHome();
-		assertThat(body).contains("com.finastra.chassis", "starter",
+		assertThat(body).contains("com.finastra.chassis", "chassis-starter",
 				"Demo project for Chassis application",
 				"<input type=\"radio\" name=\"language\" value=\"groovy\"/>",
 				"<input type=\"radio\" name=\"language\" value=\"java\" checked=\"true\"/>");

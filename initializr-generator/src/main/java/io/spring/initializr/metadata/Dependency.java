@@ -111,8 +111,8 @@ public class Dependency extends MetadataElement implements Describable {
 	private int weight;
 
 	/**
-	 * Specify if the dependency represents a "starter", i.e. the sole presence of that
-	 * dependency is enough to bootstrap the context.
+	 * Specify if the dependency represents a "chassis-starter", i.e. the sole presence of
+	 * that dependency is enough to bootstrap the context.
 	 */
 	private boolean starter = true;
 

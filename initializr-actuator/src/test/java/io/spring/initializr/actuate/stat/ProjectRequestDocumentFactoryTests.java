@@ -41,8 +41,9 @@ public class ProjectRequestDocumentFactoryTests extends AbstractInitializrStatTe
 		assertThat(document.getGenerationTimestamp()).isEqualTo(event.getTimestamp());
 		assertThat(document.getRequestIp()).isEqualTo(null);
 		assertThat(document.getGroupId()).isEqualTo("com.finastra.chassis");
-		assertThat(document.getArtifactId()).isEqualTo("starter");
-		assertThat(document.getPackageName()).isEqualTo("com.finastra.chassis.starter");
+		assertThat(document.getArtifactId()).isEqualTo("chassis-starter");
+		assertThat(document.getPackageName())
+				.isEqualTo("com.finastra.chassis.chassisstarter");
 		assertThat(document.getBootVersion()).isEqualTo("1.2.3.RELEASE");
 		assertThat(document.getJavaVersion()).isEqualTo("1.8");
 		assertThat(document.getLanguage()).isEqualTo("java");

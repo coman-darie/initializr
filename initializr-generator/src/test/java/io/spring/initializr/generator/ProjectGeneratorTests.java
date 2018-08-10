@@ -84,7 +84,7 @@ public class ProjectGeneratorTests extends AbstractProjectGeneratorTests {
 				.contains("compile('org.springframework.boot:spring-boot-starter-web')")
 				.contains(
 						"testCompile('org.springframework.boot:spring-boot-starter-test')");
-		gradleProject.gradleSettingsAssert().hasProjectName("starter");
+		gradleProject.gradleSettingsAssert().hasProjectName("chassis-starter");
 		verifyProjectSuccessfulEventFor(request);
 	}
 
@@ -239,7 +239,8 @@ public class ProjectGeneratorTests extends AbstractProjectGeneratorTests {
 		ProjectRequest request = createProjectRequest("web");
 		request.setGroupId("org.acme");
 		request.setArtifactId("42foo");
-		generateProject(request).isJavaProject("org/acme/foo", "StarterApplication");
+		generateProject(request).isJavaProject("org/acme/foo",
+				"ChassisStarterApplication");
 	}
 
 	@Test
@@ -260,8 +261,10 @@ public class ProjectGeneratorTests extends AbstractProjectGeneratorTests {
 	}
 
 	private void assertProjectWithPackageNameWithVersion(ProjectRequest request) {
-		generateProject(request).isJavaProject("org/acme/foo145", "StarterApplication")
-				.sourceCodeAssert("src/main/java/org/acme/foo145/StarterApplication.java")
+		generateProject(request)
+				.isJavaProject("org/acme/foo145", "ChassisStarterApplication")
+				.sourceCodeAssert(
+						"src/main/java/org/acme/foo145/ChassisStarterApplication.java")
 				.contains("package org.acme.foo145;");
 	}
 

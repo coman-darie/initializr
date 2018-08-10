@@ -117,7 +117,7 @@ public class InitializrConfiguration {
 		}
 	}
 
-	static String cleanPackageName(String packageName) {
+	public static String cleanPackageName(String packageName) {
 		String[] elements = packageName.trim().replaceAll("-", "").split("\\W+");
 		StringBuilder sb = new StringBuilder();
 		for (String element : elements) {

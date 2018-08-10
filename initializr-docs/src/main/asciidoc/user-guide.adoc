@@ -193,7 +193,7 @@ Let's assume that you want to generate a "my-project.zip" project based on Sprin
 displayed in the capabilities of the service):
 
 ```
-$ curl https://start.spring.io/starter.zip -d dependencies=web,devtools \
+$ curl https://start.spring.io/chassis-starter.zip -d dependencies=web,devtools \
            -d bootVersion=1.5.2.RELEASE -o my-project.zip
 ```
 
@@ -208,7 +208,7 @@ name of the project)
 The exact same project can be generated using the `http` command as well:
 
 ```
-$ http https://start.spring.io/starter.zip dependencies==web,devtools \
+$ http https://start.spring.io/chassis-starter.zip dependencies==web,devtools \
            bootVersion==1.5.1.RELEASE -d
 ```
 

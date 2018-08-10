@@ -75,9 +75,11 @@ public class ProjectGeneratorLanguageTests extends AbstractProjectGeneratorTests
 
 		ProjectAssert project = generateProject(request);
 		project.sourceCodeAssert("src/main/" + this.language
-				+ "/com/finastra/chassis/starter/StarterApplication." + this.extension)
+				+ "/com/finastra/chassis/chassisstarter/ChassisStarterApplication."
+				+ this.extension)
 				.equalsTo(new ClassPathResource("project/" + this.language
-						+ "/standard/StarterApplication." + this.expectedExtension));
+						+ "/standard/ChassisStarterApplication."
+						+ this.expectedExtension));
 	}
 
 	@Test
@@ -87,10 +89,11 @@ public class ProjectGeneratorLanguageTests extends AbstractProjectGeneratorTests
 
 		ProjectAssert project = generateProject(request);
 		project.sourceCodeAssert("src/test/" + this.language
-				+ "/com/finastra/chassis/starter/StarterApplicationTests."
+				+ "/com/finastra/chassis/chassisstarter/ChassisStarterApplicationTests."
 				+ this.extension)
 				.equalsTo(new ClassPathResource("project/" + this.language
-						+ "/standard/StarterApplicationTests." + this.expectedExtension));
+						+ "/standard/ChassisStarterApplicationTests."
+						+ this.expectedExtension));
 	}
 
 	@Test
@@ -100,10 +103,10 @@ public class ProjectGeneratorLanguageTests extends AbstractProjectGeneratorTests
 
 		ProjectAssert project = generateProject(request);
 		project.sourceCodeAssert("src/test/" + this.language
-				+ "/com/finastra/chassis/starter/StarterApplicationTests."
+				+ "/com/finastra/chassis/chassisstarter/ChassisStarterApplicationTests."
 				+ this.extension)
 				.equalsTo(new ClassPathResource("project/" + this.language
-						+ "/standard/StarterApplicationTestsWeb."
+						+ "/standard/ChassisStarterApplicationTestsWeb."
 						+ this.expectedExtension));
 	}
 
@@ -136,7 +139,8 @@ public class ProjectGeneratorLanguageTests extends AbstractProjectGeneratorTests
 		}
 		ProjectAssert project = generateProject(request);
 		project.sourceCodeAssert("src/main/" + this.language
-				+ "/com/finastra/chassis/starter/ServletInitializer." + this.extension)
+				+ "/com/finastra/chassis/chassisstarter/ServletInitializer."
+				+ this.extension)
 				.equalsTo(new ClassPathResource(
 						"project/" + this.language + "/" + expectedOutput
 								+ "/ServletInitializer." + this.expectedExtension));
@@ -150,10 +154,11 @@ public class ProjectGeneratorLanguageTests extends AbstractProjectGeneratorTests
 
 		ProjectAssert project = generateProject(request);
 		project.sourceCodeAssert("src/test/" + this.language
-				+ "/com/finastra/chassis/starter/StarterApplicationTests."
+				+ "/com/finastra/chassis/chassisstarter/ChassisStarterApplicationTests."
 				+ this.extension)
 				.equalsTo(new ClassPathResource("project/" + this.language
-						+ "/standard/StarterApplicationTests." + this.expectedExtension));
+						+ "/standard/ChassisStarterApplicationTests."
+						+ this.expectedExtension));
 	}
 
 	@Test
@@ -164,10 +169,10 @@ public class ProjectGeneratorLanguageTests extends AbstractProjectGeneratorTests
 
 		ProjectAssert project = generateProject(request);
 		project.sourceCodeAssert("src/test/" + this.language
-				+ "/com/finastra/chassis/starter/StarterApplicationTests."
+				+ "/com/finastra/chassis/chassisstarter/ChassisStarterApplicationTests."
 				+ this.extension)
 				.equalsTo(new ClassPathResource("project/" + this.language
-						+ "/spring-boot-1.4/StarterApplicationTests."
+						+ "/spring-boot-1.4/ChassisStarterApplicationTests."
 						+ this.expectedExtension));
 	}
 
@@ -179,10 +184,10 @@ public class ProjectGeneratorLanguageTests extends AbstractProjectGeneratorTests
 
 		ProjectAssert project = generateProject(request);
 		project.sourceCodeAssert("src/test/" + this.language
-				+ "/com/finastra/chassis/starter/StarterApplicationTests."
+				+ "/com/finastra/chassis/chassisstarter/ChassisStarterApplicationTests."
 				+ this.extension)
 				.equalsTo(new ClassPathResource("project/" + this.language
-						+ "/spring-boot-1.4/StarterApplicationTests."
+						+ "/spring-boot-1.4/ChassisStarterApplicationTests."
 						+ this.expectedExtension));
 	}
 

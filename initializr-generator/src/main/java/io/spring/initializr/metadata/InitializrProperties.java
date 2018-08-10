@@ -78,7 +78,7 @@ public class InitializrProperties extends InitializrConfiguration {
 	 * ArtifactId metadata.
 	 */
 	@JsonIgnore
-	private final SimpleElement artifactId = new SimpleElement(null);
+	private final SimpleElement artifactId = new SimpleElement("chassis-starter");
 
 	/**
 	 * Version metadata.
@@ -90,7 +90,7 @@ public class InitializrProperties extends InitializrConfiguration {
 	 * Name metadata.
 	 */
 	@JsonIgnore
-	private final SimpleElement name = new SimpleElement("starter");
+	private final SimpleElement name = new SimpleElement("chassis-starter");
 
 	/**
 	 * Description metadata.
@@ -103,7 +103,8 @@ public class InitializrProperties extends InitializrConfiguration {
 	 * Package name metadata.
 	 */
 	@JsonIgnore
-	private final SimpleElement packageName = new SimpleElement(null);
+	private final SimpleElement packageName = new SimpleElement(
+			"com.finastra.chassis.starter");
 
 	public List<DependencyGroup> getDependencies() {
 		return this.dependencies;

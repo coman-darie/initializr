@@ -67,7 +67,7 @@ You could achieve the same result with a simple `curl` command
 
 [source,bash]
 ----
-$ curl https://start.spring.io/starter.zip -o demo.zip
+$ curl https://start.spring.io/chassis-starter.zip -o demo.zip
 ----
 
 The web ui exposes a bunch of options that you can configure. These are mapped to the
@@ -106,7 +106,7 @@ $ curl https://start.spring.io/starter.tgz -d dependencies=web,actuator \
 -d language=groovy -d type=gradle-project -d baseDir=another-project | tar -xzvf -
 ----
 
-NOTE: The `/starter.tgz` endpoint offers the same feature as `/starter.zip` but
+NOTE: The `/starter.tgz` endpoint offers the same feature as `/chassis-starter.zip` but
 generates a compressed tarball instead.
 
 You could use this infrastructure to create your own client since the project is

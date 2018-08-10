@@ -33,14 +33,14 @@ public class InitializrConfigurationTests {
 
 	@Test
 	public void generateApplicationNameSimple() {
-		assertThat(this.properties.generateApplicationName("starter"))
-				.isEqualTo("StarterApplication");
+		assertThat(this.properties.generateApplicationName("chassis-starter"))
+				.isEqualTo("ChassisStarterApplication");
 	}
 
 	@Test
 	public void generateApplicationNameSimpleApplication() {
-		assertThat(this.properties.generateApplicationName("StarterApplication"))
-				.isEqualTo("StarterApplication");
+		assertThat(this.properties.generateApplicationName("ChassisStarterApplication"))
+				.isEqualTo("ChassisStarterApplication");
 	}
 
 	@Test

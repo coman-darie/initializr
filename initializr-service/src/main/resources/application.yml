@@ -1336,12 +1336,12 @@ initializr:
     - name: Maven Project
       id: maven-project
       description: Generate a Maven based project archive
-      sts-id: starter.zip
+      sts-id: chassis-starter.zip
       tags:
         build: maven
         format: project
       default: true
-      action: /starter.zip
+      action: /chassis-starter.zip
     - name: Maven POM
       id: maven-build
       description: Generate a Maven pom.xml

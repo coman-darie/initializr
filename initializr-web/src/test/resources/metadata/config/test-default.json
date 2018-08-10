@@ -1,6 +1,6 @@
 {
   "artifactId": {
-    "content": "starter",
+    "content": "chassis-starter",
     "description": "project coordinates (infer archive name)",
     "id": "artifactId",
     "title": "Artifact",
@@ -312,7 +312,7 @@
     "type": "SINGLE_SELECT"
   },
   "name": {
-    "content": "starter",
+    "content": "chassis-starter",
     "description": "project name (infer application name)",
     "id": "name",
     "title": "Name",
@@ -358,12 +358,12 @@
         }
       },
       {
-        "action": "/starter.zip",
+        "action": "/chassis-starter.zip",
         "default": true,
         "description": null,
         "id": "maven-project",
         "name": "Maven Project",
-        "stsId": "starter.zip",
+        "stsId": "chassis-starter.zip",
         "tags": {
           "build": "maven",
           "format": "project"
@@ -382,7 +382,7 @@
         }
       },
       {
-        "action": "/starter.zip",
+        "action": "/chassis-starter.zip",
         "default": false,
         "description": null,
         "id": "gradle-project",

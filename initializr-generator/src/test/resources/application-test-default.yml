@@ -108,12 +108,12 @@ initializr:
       action: /pom.xml
     - name: Maven Project
       id: maven-project
-      sts-id: starter.zip
+      sts-id: chassis-starter.zip
       tags:
         build: maven
         format: project
       default: true
-      action: /starter.zip
+      action: /chassis-starter.zip
     - name: Gradle Config
       id: gradle-build
       sts-id: build.gradle
@@ -129,7 +129,7 @@ initializr:
         build: gradle
         format: project
       default: false
-      action: /starter.zip
+      action: /chassis-starter.zip
   packagings:
     - name: Jar
       id: jar
