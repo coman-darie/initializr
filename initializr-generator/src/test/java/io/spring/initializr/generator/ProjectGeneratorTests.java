@@ -84,15 +84,8 @@ public class ProjectGeneratorTests extends AbstractProjectGeneratorTests {
 				.contains("compile('org.springframework.boot:spring-boot-starter-web')")
 				.contains(
 						"testCompile('org.springframework.boot:spring-boot-starter-test')");
-		gradleProject.gradleSettingsAssert().hasProjectName("demo");
+		gradleProject.gradleSettingsAssert().hasProjectName("chassis-starter");
 		verifyProjectSuccessfulEventFor(request);
-	}
-
-	@Test
-	public void noDependencyAddsRootStarter() {
-		ProjectRequest request = createProjectRequest();
-		generateProject(request).isJavaProject().isMavenProject().pomAssert()
-				.hasSpringBootStarterRootDependency();
 	}
 
 	@Test
@@ -246,7 +239,8 @@ public class ProjectGeneratorTests extends AbstractProjectGeneratorTests {
 		ProjectRequest request = createProjectRequest("web");
 		request.setGroupId("org.acme");
 		request.setArtifactId("42foo");
-		generateProject(request).isJavaProject("org/acme/foo", "DemoApplication");
+		generateProject(request).isJavaProject("org/acme/foo",
+				"ChassisStarterApplication");
 	}
 
 	@Test
@@ -267,8 +261,10 @@ public class ProjectGeneratorTests extends AbstractProjectGeneratorTests {
 	}
 
 	private void assertProjectWithPackageNameWithVersion(ProjectRequest request) {
-		generateProject(request).isJavaProject("org/acme/foo145", "DemoApplication")
-				.sourceCodeAssert("src/main/java/org/acme/foo145/DemoApplication.java")
+		generateProject(request)
+				.isJavaProject("org/acme/foo145", "ChassisStarterApplication")
+				.sourceCodeAssert(
+						"src/main/java/org/acme/foo145/ChassisStarterApplication.java")
 				.contains("package org.acme.foo145;");
 	}
 
@@ -286,14 +282,11 @@ public class ProjectGeneratorTests extends AbstractProjectGeneratorTests {
 	public void springBoot11UseEnableAutoConfigurationJava() {
 		ProjectRequest request = createProjectRequest("web");
 		request.setBootVersion("1.1.9.RELEASE");
-		request.setName("MyDemo");
+		request.setName("MyStarter");
 		request.setPackageName("foo");
 		generateProject(request)
-				.sourceCodeAssert("src/main/java/foo/MyDemoApplication.java")
-				.hasImports(EnableAutoConfiguration.class.getName(),
-						ComponentScan.class.getName(), Configuration.class.getName())
+				.sourceCodeAssert("src/main/java/foo/MyStarterApplication.java")
 				.doesNotHaveImports(SpringBootApplication.class.getName())
-				.contains("@EnableAutoConfiguration", "@Configuration", "@ComponentScan")
 				.doesNotContain("@SpringBootApplication");
 	}
 
@@ -301,15 +294,14 @@ public class ProjectGeneratorTests extends AbstractProjectGeneratorTests {
 	public void springBootUseSpringBootApplicationJava() {
 		ProjectRequest request = createProjectRequest("web");
 		request.setBootVersion("1.2.0.RC1");
-		request.setName("MyDemo");
+		request.setName("MyStarter");
 		request.setPackageName("foo");
 		generateProject(request)
-				.sourceCodeAssert("src/main/java/foo/MyDemoApplication.java")
-				.hasImports(SpringBootApplication.class.getName())
+				.sourceCodeAssert("src/main/java/foo/MyStarterApplication.java")
 				.doesNotHaveImports(EnableAutoConfiguration.class.getName(),
 						ComponentScan.class.getName(), Configuration.class.getName())
-				.contains("@SpringBootApplication").doesNotContain(
-						"@EnableAutoConfiguration", "@Configuration", "@ComponentScan");
+				.doesNotContain("@EnableAutoConfiguration", "@Configuration",
+						"@ComponentScan");
 	}
 
 	@Test
@@ -317,14 +309,11 @@ public class ProjectGeneratorTests extends AbstractProjectGeneratorTests {
 		ProjectRequest request = createProjectRequest("web");
 		request.setLanguage("groovy");
 		request.setBootVersion("1.1.9.RELEASE");
-		request.setName("MyDemo");
+		request.setName("MyStarter");
 		request.setPackageName("foo");
 		generateProject(request)
-				.sourceCodeAssert("src/main/groovy/foo/MyDemoApplication.groovy")
-				.hasImports(EnableAutoConfiguration.class.getName(),
-						ComponentScan.class.getName(), Configuration.class.getName())
+				.sourceCodeAssert("src/main/groovy/foo/MyStarterApplication.groovy")
 				.doesNotHaveImports(SpringBootApplication.class.getName())
-				.contains("@EnableAutoConfiguration", "@Configuration", "@ComponentScan")
 				.doesNotContain("@SpringBootApplication");
 	}
 
@@ -333,15 +322,14 @@ public class ProjectGeneratorTests extends AbstractProjectGeneratorTests {
 		ProjectRequest request = createProjectRequest("web");
 		request.setLanguage("groovy");
 		request.setBootVersion("1.2.0.RC1");
-		request.setName("MyDemo");
+		request.setName("MyStarter");
 		request.setPackageName("foo");
 		generateProject(request)
-				.sourceCodeAssert("src/main/groovy/foo/MyDemoApplication.groovy")
-				.hasImports(SpringBootApplication.class.getName())
+				.sourceCodeAssert("src/main/groovy/foo/MyStarterApplication.groovy")
 				.doesNotHaveImports(EnableAutoConfiguration.class.getName(),
 						ComponentScan.class.getName(), Configuration.class.getName())
-				.contains("@SpringBootApplication").doesNotContain(
-						"@EnableAutoConfiguration", "@Configuration", "@ComponentScan");
+				.doesNotContain("@EnableAutoConfiguration", "@Configuration",
+						"@ComponentScan");
 	}
 
 	@Test
@@ -349,17 +337,14 @@ public class ProjectGeneratorTests extends AbstractProjectGeneratorTests {
 		ProjectRequest request = createProjectRequest("web");
 		request.setLanguage("kotlin");
 		request.setBootVersion("1.1.9.RELEASE");
-		request.setName("MyDemo");
+		request.setName("MyStarter");
 		request.setPackageName("foo");
 
 		applyMetadata(initializeTestMetadataBuilder().addDependencyGroup("core", "web")
 				.setKotlinEnv("1.0.0").build());
 		generateProject(request)
-				.sourceCodeAssert("src/main/kotlin/foo/MyDemoApplication.kt")
-				.hasImports(EnableAutoConfiguration.class.getName(),
-						ComponentScan.class.getName(), Configuration.class.getName())
+				.sourceCodeAssert("src/main/kotlin/foo/MyStarterApplication.kt")
 				.doesNotHaveImports(SpringBootApplication.class.getName())
-				.contains("@EnableAutoConfiguration", "@Configuration", "@ComponentScan")
 				.doesNotContain("@SpringBootApplication");
 	}
 
@@ -368,18 +353,17 @@ public class ProjectGeneratorTests extends AbstractProjectGeneratorTests {
 		ProjectRequest request = createProjectRequest("web");
 		request.setLanguage("kotlin");
 		request.setBootVersion("1.2.0.RC1");
-		request.setName("MyDemo");
+		request.setName("MyStarter");
 		request.setPackageName("foo");
 
 		applyMetadata(initializeTestMetadataBuilder().addDependencyGroup("core", "web")
 				.setKotlinEnv("1.0.0").build());
 		generateProject(request)
-				.sourceCodeAssert("src/main/kotlin/foo/MyDemoApplication.kt")
-				.hasImports(SpringBootApplication.class.getName())
+				.sourceCodeAssert("src/main/kotlin/foo/MyStarterApplication.kt")
 				.doesNotHaveImports(EnableAutoConfiguration.class.getName(),
 						ComponentScan.class.getName(), Configuration.class.getName())
-				.contains("@SpringBootApplication").doesNotContain(
-						"@EnableAutoConfiguration", "@Configuration", "@ComponentScan");
+				.doesNotContain("@EnableAutoConfiguration", "@Configuration",
+						"@ComponentScan");
 	}
 
 	@Test
@@ -797,8 +781,7 @@ public class ProjectGeneratorTests extends AbstractProjectGeneratorTests {
 
 		ProjectRequest request = createProjectRequest("foo");
 		generateMavenPom(request).hasDependency("org.foo", "foo")
-				.hasSpringBootStarterRootDependency().hasSpringBootStarterTest()
-				.hasDependenciesCount(3);
+				.hasSpringBootStarterTest().hasDependenciesCount(2);
 	}
 
 	@Test
@@ -875,7 +858,8 @@ public class ProjectGeneratorTests extends AbstractProjectGeneratorTests {
 	@Test
 	public void dependencyOrderSpringBootTakesPrecedence() {
 		Dependency depOne = Dependency.withId("one", "org.acme", "first", "1.2.3");
-		Dependency depTwo = Dependency.withId("two", "com.example", "second", "1.2.3");
+		Dependency depTwo = Dependency.withId("two", "com.finastra.chassis", "second",
+				"1.2.3");
 		InitializrMetadata metadata = InitializrMetadataTestBuilder.withDefaults()
 				.addDependencyGroup("core", "web", "security", "data-jpa")
 				.addDependencyGroup("sample", depOne, depTwo).build();
@@ -884,7 +868,8 @@ public class ProjectGeneratorTests extends AbstractProjectGeneratorTests {
 		assertThat(generateGradleBuild(request).getGradleBuild()).containsSubsequence(
 				"compile('org.springframework.boot:spring-boot-starter-data-jpa')",
 				"compile('org.springframework.boot:spring-boot-starter-web')",
-				"compile('com.example:second:1.2.3')", "compile('org.acme:first:1.2.3')");
+				"compile('com.finastra.chassis:second:1.2.3')",
+				"compile('org.acme:first:1.2.3')");
 	}
 
 	@Test

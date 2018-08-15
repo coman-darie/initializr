@@ -50,7 +50,8 @@ public class ActuatorIntegrationTests
 
 	@Test
 	public void metricsAreRegistered() {
-		downloadZip("/starter.zip?packaging=jar&javaVersion=1.8&style=web&style=jpa");
+		downloadZip(
+				"/chassis-starter.zip?packaging=jar&javaVersion=1.8&style=web&style=jpa");
 		JsonNode result = metricsEndpoint();
 		JsonNode names = result.get("names");
 		List<String> metrics = new ArrayList<>();
@@ -68,7 +69,7 @@ public class ActuatorIntegrationTests
 		int jpaDependency = metricValue("initializr.dependency.data-jpa");
 
 		// No jpa dep this time
-		downloadZip("/starter.zip?packaging=jar&javaVersion=1.8&style=web");
+		downloadZip("/chassis-starter.zip?packaging=jar&javaVersion=1.8&style=web");
 
 		assertThat(metricValue("initializr.requests"))
 				.as("Number of request should have increased").isEqualTo(requests + 1);

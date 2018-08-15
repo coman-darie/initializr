@@ -36,7 +36,7 @@ public class ProjectGenerationPostProcessorTests
 
 	@Test
 	public void postProcessorsInvoked() {
-		downloadZip("/starter.zip?bootVersion=1.2.4.RELEASE&javaVersion=1.6")
+		downloadZip("/chassis-starter.zip?bootVersion=1.2.4.RELEASE&javaVersion=1.6")
 				.isJavaProject().isMavenProject().pomAssert()
 				.hasSpringBootParent("1.2.3.RELEASE").hasProperty("java.version", "1.7");
 	}

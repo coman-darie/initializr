@@ -1,8 +1,8 @@
 To create a default project:
-	$ http {{serviceUrl}}/starter.zip -d
+	$ http {{serviceUrl}}/chassis-starter.zip -d
 
 To create a web project using Java 10:
-	$ http {{serviceUrl}}/starter.zip dependencies==web \\
+	$ http {{serviceUrl}}/chassis-starter.zip dependencies==web \\
 			javaVersion==10 -d
 
 To create a web/data-jpa gradle project unpacked:

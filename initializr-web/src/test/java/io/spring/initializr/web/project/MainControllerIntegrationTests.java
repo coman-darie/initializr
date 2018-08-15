@@ -48,7 +48,7 @@ public class MainControllerIntegrationTests
 
 	@Test
 	public void simpleZipProject() {
-		downloadZip("/starter.zip?style=web&style=jpa").isJavaProject()
+		downloadZip("/chassis-starter.zip?style=web&style=jpa").isJavaProject()
 				.hasFile(".gitignore").hasExecutableFile("mvnw").isMavenProject()
 				.hasStaticAndTemplatesResources(true).pomAssert().hasDependenciesCount(3)
 				.hasSpringBootStarterDependency("web")
@@ -85,15 +85,23 @@ public class MainControllerIntegrationTests
 
 	@Test
 	public void noDependencyProject() {
-		downloadZip("/starter.zip").isJavaProject().isMavenProject()
-				.hasStaticAndTemplatesResources(false).pomAssert().hasDependenciesCount(2)
-				// the root dep is added if none is specified
-				.hasSpringBootStarterRootDependency().hasSpringBootStarterTest();
+		downloadZip("/chassis-starter.zip").isJavaProject().isMavenProject()
+				.hasStaticAndTemplatesResources(false).pomAssert().hasDependenciesCount(1)
+				.hasSpringBootStarterTest();
 	}
 
 	@Test
 	public void dependenciesIsAnAliasOfStyle() {
-		downloadZip("/starter.zip?dependencies=web&dependencies=jpa").isJavaProject()
+		downloadZip("/chassis-starter.zip?dependencies=web&dependencies=jpa")
+				.isJavaProject().isMavenProject().hasStaticAndTemplatesResources(true)
+				.pomAssert().hasDependenciesCount(3).hasSpringBootStarterDependency("web")
+				.hasSpringBootStarterDependency("data-jpa") // alias jpa -> data-jpa
+				.hasSpringBootStarterTest();
+	}
+
+	@Test
+	public void dependenciesIsAnAliasOfStyleCommaSeparated() {
+		downloadZip("/chassis-starter.zip?dependencies=web,jpa").isJavaProject()
 				.isMavenProject().hasStaticAndTemplatesResources(true).pomAssert()
 				.hasDependenciesCount(3).hasSpringBootStarterDependency("web")
 				.hasSpringBootStarterDependency("data-jpa") // alias jpa -> data-jpa
@@ -101,25 +109,18 @@ public class MainControllerIntegrationTests
 	}
 
 	@Test
-	public void dependenciesIsAnAliasOfStyleCommaSeparated() {
-		downloadZip("/starter.zip?dependencies=web,jpa").isJavaProject().isMavenProject()
-				.hasStaticAndTemplatesResources(true).pomAssert().hasDependenciesCount(3)
-				.hasSpringBootStarterDependency("web")
-				.hasSpringBootStarterDependency("data-jpa") // alias jpa -> data-jpa
-				.hasSpringBootStarterTest();
-	}
-
-	@Test
 	public void kotlinRange() {
-		downloadZip("/starter.zip?style=web&language=kotlin&bootVersion=1.2.1.RELEASE")
-				.isKotlinProject().isMavenProject().pomAssert().hasDependenciesCount(4)
-				.hasProperty("kotlin.version", "1.1");
+		downloadZip(
+				"/chassis-starter.zip?style=web&language=kotlin&bootVersion=1.2.1.RELEASE")
+						.isKotlinProject().isMavenProject().pomAssert()
+						.hasDependenciesCount(4).hasProperty("kotlin.version", "1.1");
 	}
 
 	@Test
 	public void gradleWarProject() {
-		downloadZip("/starter.zip?style=web&style=security&packaging=war&type=gradle.zip")
-				.isJavaWarProject().isGradleProject();
+		downloadZip(
+				"/chassis-starter.zip?style=web&style=security&packaging=war&type=gradle.zip")
+						.isJavaWarProject().isGradleProject();
 	}
 
 	@Test
@@ -225,7 +226,7 @@ public class MainControllerIntegrationTests
 
 	@Test
 	public void curlCanStillDownloadZipArchive() {
-		ResponseEntity<byte[]> response = execute("/starter.zip", byte[].class,
+		ResponseEntity<byte[]> response = execute("/chassis-starter.zip", byte[].class,
 				"curl/1.2.4", "*/*");
 		zipProjectAssert(response.getBody()).isMavenProject().isJavaProject();
 	}
@@ -344,7 +345,7 @@ public class MainControllerIntegrationTests
 	@Test
 	public void missingDependencyProperException() {
 		try {
-			downloadArchive("/starter.zip?style=foo:bar");
+			downloadArchive("/chassis-starter.zip?style=foo:bar");
 			fail("Should have failed");
 		}
 		catch (HttpClientErrorException ex) {
@@ -357,7 +358,7 @@ public class MainControllerIntegrationTests
 	@Test
 	public void invalidDependencyProperException() {
 		try {
-			downloadArchive("/starter.zip?style=foo");
+			downloadArchive("/chassis-starter.zip?style=foo");
 			fail("Should have failed");
 		}
 		catch (HttpClientErrorException ex) {
@@ -411,7 +412,7 @@ public class MainControllerIntegrationTests
 
 	@Test
 	public void downloadStarter() {
-		byte[] body = getRestTemplate().getForObject(createUrl("starter.zip"),
+		byte[] body = getRestTemplate().getForObject(createUrl("chassis-starter.zip"),
 				byte[].class);
 		assertThat(body).isNotNull();
 		assertThat(body.length).isGreaterThan(100);

@@ -9,7 +9,7 @@
       "templated": true
     },
     "maven-project": {
-      "href": "https://@host@/starter.zip?type=maven-project{&dependencies,packaging,javaVersion,language,bootVersion,groupId,artifactId,version,name,description,packageName}",
+      "href": "https://@host@/chassis-starter.zip?type=maven-project{&dependencies,packaging,javaVersion,language,bootVersion,groupId,artifactId,version,name,description,packageName}",
       "templated": true
     },
     "gradle-build": {
@@ -17,7 +17,7 @@
       "templated": true
     },
     "gradle-project": {
-      "href": "https://@host@/starter.zip?type=gradle-project{&dependencies,packaging,javaVersion,language,bootVersion,groupId,artifactId,version,name,description,packageName}",
+      "href": "https://@host@/chassis-starter.zip?type=gradle-project{&dependencies,packaging,javaVersion,language,bootVersion,groupId,artifactId,version,name,description,packageName}",
       "templated": true
     }
   },
@@ -111,7 +111,7 @@
       {
         "id": "maven-project",
         "name": "Maven Project",
-        "action": "/starter.zip",
+        "action": "/chassis-starter.zip",
         "tags": {
           "build": "maven",
           "format": "project"
@@ -129,7 +129,7 @@
       {
         "id": "gradle-project",
         "name": "Gradle Project",
-        "action": "/starter.zip",
+        "action": "/chassis-starter.zip",
         "tags": {
           "build": "gradle",
           "format": "project"
@@ -207,11 +207,11 @@
   },
   "groupId": {
     "type": "text",
-    "default": "com.example"
+    "default": "com.finastra.chassis"
   },
   "artifactId": {
     "type": "text",
-    "default": "demo"
+    "default": "chassis-starter"
   },
   "version": {
     "type": "text",
@@ -219,14 +219,14 @@
   },
   "name": {
     "type": "text",
-    "default": "demo"
+    "default": "chassis-starter"
   },
   "description": {
     "type": "text",
-    "default": "Demo project for Spring Boot"
+    "default": "Demo project for Chassis application"
   },
   "packageName": {
     "type": "text",
-    "default": "com.example.demo"
+    "default": "com.finastra.chassis.starter"
   }
 }

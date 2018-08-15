@@ -17,7 +17,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     {{/trackingCode}}
 </head>
 <body>
-<form id="form" action="/starter.zip" method="get" role="form">
+<form id="form" action="/chassis-starter.zip" method="get" role="form">
     <div class="container-fluid">
         <div class="row start-header">
             <div class="container">
@@ -44,7 +44,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
                         </select>
                         </span>
                         <span class="rwd-line">
-                        <label for="bootVersion">and Spring Boot</label>
+                        <label for="bootVersion">and Chassis Tools</label>
                         <select tabindex="3" class="form-control" name="bootVersion" id="bootVersion">
                             {{#bootVersions.content}}
                             <option value="{{id}}" {{#default}} selected{{/default}}>{{name}}</option>
@@ -121,6 +121,11 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
                     <div class="form-group">
                         <label for="starters" class="control-label">Selected Dependencies</label>
                         <div id="starters">
+                            <div class="tag" data-id="web">Web<button type="button" class="close" aria-label="Close" /></div>
+                        	<div class="tag" data-id="actuator">Actuator<button type="button" class="close" aria-label="Close" /></div>
+                        	<div class="tag" data-id="cloud-config-client">Config Client<button type="button" class="close" aria-label="Close" /></div>
+                        	<div class="tag" data-id="configuration-processor">Configuration Processor<button type="button" class="close" aria-label="Close" /></div>
+                        	<div class="tag" data-id="cloud-hystrix">Hystrix<button type="button" class="close" aria-label="Close" /></div>
                         </div>
                     </div>
                 </div>

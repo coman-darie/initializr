@@ -37,17 +37,16 @@ public class CommandLineExampleIntegrationTests
 
 	@Test
 	public void generateDefaultProject() {
-		downloadZip("/starter.zip").isJavaProject().isMavenProject()
+		downloadZip("/chassis-starter.zip").isJavaProject().isMavenProject()
 				.hasStaticAndTemplatesResources(false).pomAssert()
-				.hasSpringBootStarterRootDependency().hasSpringBootStarterTest()
-				.hasDependenciesCount(2);
+				.hasSpringBootStarterTest().hasDependenciesCount(1);
 	}
 
 	@Test
 	public void generateWebProjectWithJava8() {
-		downloadZip("/starter.zip?dependencies=web&javaVersion=1.8").isJavaProject()
-				.isMavenProject().hasStaticAndTemplatesResources(true).pomAssert()
-				.hasJavaVersion("1.8").hasSpringBootStarterDependency("web")
+		downloadZip("/chassis-starter.zip?dependencies=web&javaVersion=1.8")
+				.isJavaProject().isMavenProject().hasStaticAndTemplatesResources(true)
+				.pomAssert().hasJavaVersion("1.8").hasSpringBootStarterDependency("web")
 				.hasSpringBootStarterTest().hasDependenciesCount(2);
 	}
 

@@ -90,9 +90,11 @@ public class InitializrMetadataTestBuilder {
 
 	public InitializrMetadataTestBuilder addDefaultTypes() {
 		return addType("maven-build", false, "/pom.xml", "maven", "build")
-				.addType("maven-project", true, "/starter.zip", "maven", "project")
+				.addType("maven-project", true, "/chassis-starter.zip", "maven",
+						"project")
 				.addType("gradle-build", false, "/build.gradle", "gradle", "build")
-				.addType("gradle-project", false, "/starter.zip", "gradle", "project");
+				.addType("gradle-project", false, "/chassis-starter.zip", "gradle",
+						"project");
 	}
 
 	public InitializrMetadataTestBuilder addType(String id, boolean defaultValue,

@@ -19,6 +19,8 @@ package io.spring.initializr.generator;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.spring.initializr.metadata.InitializrConfiguration;
+
 import org.springframework.util.StringUtils;
 
 /**
@@ -160,7 +162,8 @@ public class BasicProjectRequest {
 			return this.packageName;
 		}
 		if (StringUtils.hasText(this.groupId) && StringUtils.hasText(this.artifactId)) {
-			return getGroupId() + "." + getArtifactId();
+			return InitializrConfiguration
+					.cleanPackageName(getGroupId() + "." + getArtifactId());
 		}
 		return null;
 	}

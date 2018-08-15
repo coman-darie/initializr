@@ -72,13 +72,13 @@ public class InitializrProperties extends InitializrConfiguration {
 	 * GroupId metadata.
 	 */
 	@JsonIgnore
-	private final SimpleElement groupId = new SimpleElement("com.example");
+	private final SimpleElement groupId = new SimpleElement("com.finastra.chassis");
 
 	/**
 	 * ArtifactId metadata.
 	 */
 	@JsonIgnore
-	private final SimpleElement artifactId = new SimpleElement(null);
+	private final SimpleElement artifactId = new SimpleElement("chassis-starter");
 
 	/**
 	 * Version metadata.
@@ -90,20 +90,21 @@ public class InitializrProperties extends InitializrConfiguration {
 	 * Name metadata.
 	 */
 	@JsonIgnore
-	private final SimpleElement name = new SimpleElement("demo");
+	private final SimpleElement name = new SimpleElement("chassis-starter");
 
 	/**
 	 * Description metadata.
 	 */
 	@JsonIgnore
 	private final SimpleElement description = new SimpleElement(
-			"Demo project for Spring Boot");
+			"Demo project for Chassis application");
 
 	/**
 	 * Package name metadata.
 	 */
 	@JsonIgnore
-	private final SimpleElement packageName = new SimpleElement(null);
+	private final SimpleElement packageName = new SimpleElement(
+			"com.finastra.chassis.starter");
 
 	public List<DependencyGroup> getDependencies() {
 		return this.dependencies;

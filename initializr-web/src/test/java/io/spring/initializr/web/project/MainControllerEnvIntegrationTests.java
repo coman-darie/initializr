@@ -48,7 +48,7 @@ public class MainControllerEnvIntegrationTests
 
 	@Test
 	public void generateProjectWithInvalidName() {
-		downloadZip("/starter.zip?style=data-jpa&name=Invalid")
+		downloadZip("/chassis-starter.zip?style=data-jpa&name=Invalid")
 				.isJavaProject(ProjectAssert.DEFAULT_PACKAGE_NAME, "FooBarApplication")
 				.isMavenProject().hasStaticAndTemplatesResources(false).pomAssert()
 				.hasDependenciesCount(2).hasSpringBootStarterDependency("data-jpa")
