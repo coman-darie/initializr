@@ -1,4 +1,4 @@
-= Spring Initializr Reference Guide
+= Chassis Initializr - Spring Initializr Reference Guide
 Stéphane Nicoll; Dave Syer
 :doctype: book
 :toc:
