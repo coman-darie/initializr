@@ -16,6 +16,7 @@ spec:
       containers:
       - name: chassis-initializr-dpl
         image: "{{ .Values.Docker.RegistryUri }}/{{ .Values.Docker.Image }}:{{ .Values.Docker.Tag }}"
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
         resources:
@@ -23,6 +24,5 @@ spec:
             memory: {{ .Values.Deployment.Memory.Limits }}
           requests:
             memory: {{ .Values.Deployment.Memory.Request }}
-      restartPolicy: Always
       imagePullSecrets:
       - name: cc21acrffdced001
