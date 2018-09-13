@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: chassis-initializr-ingress
+  namespace: chassis-ns
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: {{ .Values.global.Ingress.Class }}
+spec:
+  rules:
+  - host: {{ .Release.Name }}.{{ .Values.global.Ingress.BaseUrl }}
+    http:
+      paths:
+      - backend:
+          serviceName: chassis-initializr-svc
+          servicePort: 80

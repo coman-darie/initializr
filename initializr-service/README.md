@@ -1,5 +1,5 @@
-Test Chassis Initializr
-========================
+Test Chassis Initializr on your local docker environment
+========================================================
 
 1. create dockerfile with app
 ```

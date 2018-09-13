@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: chassis-initializr-svc
+  name: chassis-initializr-svc
+  namespace: chassis-ns
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    name: chassis-initializr-dpl

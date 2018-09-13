@@ -1,0 +1,15 @@
+global:
+  Ingress:
+    BaseUrl: fc.dev-beta.fusionfabric.cloud
+    Class: fc-nginx
+
+Docker:
+  RegistryUri: p21d11102018001.azurecr.io
+  Image: chassis/chassis-initializr
+  Tag: latest
+
+Deployment:
+  Replicas: 1
+  Memory:
+    Limits: 2Gi
+    Request: 2Gi

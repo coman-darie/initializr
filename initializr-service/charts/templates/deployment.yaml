@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    name: chassis-initializr-dpl
+  name: chassis-initializr-dpl
+  namespace: chassis-ns
+spec:
+  replicas: {{ .Values.Deployment.Replicas }}
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        name: chassis-initializr-dpl
+    spec:
+      containers:
+      - name: chassis-initializr-dpl
+        image: "{{ .Values.Docker.RegistryUri }}/{{ .Values.Docker.Image }}:{{ .Values.Docker.Tag }}"
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            memory: {{ .Values.Deployment.Memory.Limits }}
+          requests:
+            memory: {{ .Values.Deployment.Memory.Request }}
+      restartPolicy: Always
+      imagePullSecrets:
+      - name: cc21acrffdced001
