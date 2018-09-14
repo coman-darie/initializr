@@ -4,7 +4,6 @@ metadata:
   labels:
     name: chassis-initializr-dpl
   name: chassis-initializr-dpl
-  namespace: chassis-ns
 spec:
   replicas: {{ .Values.Deployment.Replicas }}
   strategy: {}

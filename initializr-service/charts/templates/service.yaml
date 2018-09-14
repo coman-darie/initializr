@@ -4,7 +4,6 @@ metadata:
   labels:
     name: chassis-initializr-svc
   name: chassis-initializr-svc
-  namespace: chassis-ns
 spec:
   ports:
   - port: 80
