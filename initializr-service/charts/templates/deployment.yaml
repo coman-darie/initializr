@@ -24,5 +24,3 @@ spec:
             memory: {{ .Values.Deployment.Memory.Limits }}
           requests:
             memory: {{ .Values.Deployment.Memory.Request }}
-      imagePullSecrets:
-      - name: cc21acrffdced001
