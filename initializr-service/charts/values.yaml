@@ -6,7 +6,7 @@ global:
 Docker:
   RegistryUri: p21d11102018001.azurecr.io
   Image: chassis/chassis-initializr
-  Tag: latest
+  Tag: 12
 
 Deployment:
   Replicas: 1

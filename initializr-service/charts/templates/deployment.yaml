@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: chassis-initializr-dpl
-        image: "{{ .Values.Docker.RegistryUri }}/{{ .Values.Docker.Image }}:{{ .Release.Artifacts.Artifacts.BuildNumber }}"
+        image: "{{ .Values.Docker.RegistryUri }}/{{ .Values.Docker.Image }}:{{ .Values.Docker.Tag }}"
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
