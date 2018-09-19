@@ -6,8 +6,11 @@ metadata:
     ingress.kubernetes.io/rewrite-target: /
     kubernetes.io/ingress.class: {{ .Values.global.Ingress.Class }}
 spec:
+  tls:
+  - hosts:
+    - {{ .Release.Name }}.{{ .Values.dns.base }}
   rules:
-  - host: {{ .Release.Name }}.{{ .Values.global.Ingress.BaseUrl }}
+  - host: {{ .Release.Name }}.{{ .Values.dns.base }}
     http:
       paths:
       - backend:
