@@ -8,9 +8,9 @@ metadata:
 spec:
   tls:
   - hosts:
-    - {{ .Release.Name }}.{{ .Values.dns.base }}
+    - {{ .Release.Name }}.{{ .Values.global.Ingress.BaseUrl }}
   rules:
-  - host: {{ .Release.Name }}.{{ .Values.dns.base }}
+  - host: {{ .Release.Name }}.{{ .Values.global.Ingress.BaseUrl }}
     http:
       paths:
       - backend:
