@@ -257,6 +257,9 @@ public class ProjectGenerator {
 		write(new File(src, applicationName + "Controller." + extension),
 				"ApplicationController." + extension, model);
 
+		write(new File(src, applicationName + "Service." + extension),
+				"ApplicationService." + extension, model);
+
 		if ("war".equals(request.getPackaging())) {
 			String fileName = "ServletInitializer." + extension;
 			write(new File(src, fileName), fileName, model);
@@ -269,10 +272,14 @@ public class ProjectGenerator {
 		write(new File(test, applicationName + "Tests." + extension),
 				"ApplicationTests." + extension, model);
 
+		write(new File(test, applicationName + "ControllerTest." + extension),
+				"ApplicationControllerTest." + extension, model);
+
 		File resources = new File(dir, "src/main/resources");
 		resources.mkdirs();
 		write(new File(resources, "application.properties"), "application.properties",
 				model);
+		write(new File(resources, "openapi.yaml"), "openapi.yaml", model);
 
 		if (request.hasWebFacet()) {
 			new File(dir, "src/main/resources/templates").mkdirs();
