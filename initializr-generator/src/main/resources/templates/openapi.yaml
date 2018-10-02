@@ -1,0 +1,49 @@
+swagger: "2.0"
+
+info:
+  description: |-
+    Example for chassis-initializr swagger codegen
+  version: "0.0.1"
+  title: "Chassis-initializr"
+basePath: "/api/example"
+paths:
+  /nodes/{nodeId}:
+    get:
+      tags:
+      - "navigation"
+      summary: "Display node info by ID"
+      description: "Returns description for a given node id, notably the parent id"
+      operationId: "getNode"
+      parameters:
+      - name: "nodeId"
+        in: "path"
+        description: "ID of node"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Node"
+        404:
+          description: "Node id not found"
+definitions:
+  Node:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      parentId:
+        type: "string"
+    example:
+      nodeId: "2"
+      parentId: "1"
+    NodeId:
+      type: object
+      properties:
+        nodeId:
+          type: string
+      required:
+      - nodeId
+      example:
+        nodeId: "1"

@@ -1,18 +1,21 @@
-package {{packageName}}
+packpackage {{packageName}};
 
-import org.springframework.cloud.context.config.annotation.RefreshScope
+import com.finastra.chassis.openapi.NodesApi
+import com.finastra.chassis.openapi.model.*
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
 
+
 @RestController
-@RequestMapping(path="/test")
-@RefreshScope
-class {{applicationName}}Controller {
+@RequestMapping(path = "/api/example")
+class {{applicationName}}Controller implements NodesApi {
 
-    @RequestMapping(method=RequestMethod.GET)
-    String getSalutation() {
-        return "Hello world!"
-    }
+{{applicationName}}Service chassisStarterApplicationService = new {{applicationName}}Service();
 
+@Override
+public ResponseEntity<Node> getNode(String nodeId) {
+String parentId = chassisStarterApplicationService.getParent(nodeId);
+return ResponseEntity.ok(new Node().id(nodeId).parentId(parentId));
+}
 }
