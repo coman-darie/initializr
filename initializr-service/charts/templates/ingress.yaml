@@ -3,7 +3,6 @@ kind: Ingress
 metadata:
   name: chassis-initializr-ingress
   annotations:
-    ingress.kubernetes.io/rewrite-target: /
     kubernetes.io/ingress.class: {{ .Values.global.Ingress.Class }}
 spec:
   rules:
