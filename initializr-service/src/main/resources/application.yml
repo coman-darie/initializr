@@ -1369,6 +1369,6 @@ initializr:
   bootVersions:
     - name : 0.0.1 (with spring-boot 1.5.8.RELEASE)
       id: 1.5.8.RELEASE
-    - name : 0.0.2 (with spring-boot 2.0.4.RELEASE)
+    - name : 0.0.4 (with spring-boot 2.0.4.RELEASE)
       id: 2.0.4.RELEASE
       default: true
