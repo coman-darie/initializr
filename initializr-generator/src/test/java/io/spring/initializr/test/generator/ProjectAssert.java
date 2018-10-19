@@ -203,7 +203,9 @@ public class ProjectAssert {
 				"src/test/" + codeLocation + "/" + packageName + "/"
 						+ expectedApplicationName + "Tests." + extension,
 				"src/main/resources/application.properties",
-				"src/main/resources/openapi.yaml");
+				"src/main/resources/openapi.yaml", "Dockerfile", "charts/Chart.yaml",
+				"charts/.helmignore", "charts/values.yaml",
+				"charts/templates/service.yaml", "charts/templates/deployment.yaml");
 	}
 
 	public ProjectAssert isJavaWarProject(String expectedApplicationName) {

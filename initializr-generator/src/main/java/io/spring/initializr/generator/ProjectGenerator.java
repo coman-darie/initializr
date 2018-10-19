@@ -247,6 +247,9 @@ public class ProjectGenerator {
 		String language = request.getLanguage();
 
 		String codeLocation = language;
+
+		write(new File(dir, "Dockerfile"), "Dockerfile", model);
+
 		File src = new File(new File(dir, "src/main/" + codeLocation),
 				request.getPackageName().replace(".", "/"));
 		src.mkdirs();
@@ -280,6 +283,17 @@ public class ProjectGenerator {
 		write(new File(resources, "application.properties"), "application.properties",
 				model);
 		write(new File(resources, "openapi.yaml"), "openapi.yaml", model);
+
+		File charts = new File(dir, "charts");
+		charts.mkdirs();
+		write(new File(charts, ".helmignore"), "helmignore.tmpl", model);
+		write(new File(charts, "values.yaml"), "values.yaml", model);
+		write(new File(charts, "Chart.yaml"), "chart.yaml", model);
+
+		File templates = new File(dir + "/charts", "templates");
+		templates.mkdirs();
+		write(new File(templates, "service.yaml"), "service.yaml", model);
+		write(new File(templates, "deployment.yaml"), "deployment.yaml", model);
 
 		if (request.hasWebFacet()) {
 			new File(dir, "src/main/resources/templates").mkdirs();

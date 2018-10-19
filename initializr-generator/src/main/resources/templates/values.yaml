@@ -1,0 +1,26 @@
+global:
+  Ingress:
+    BaseUrl: fc.dev-beta.fusionfabric.cloud
+    Class: fc-nginx
+
+Docker:
+  RegistryUri: p21d11102018001.azurecr.io
+  Image: chassis/{{applicationName}}
+  Tag: 12
+
+Deployment:
+  Replicas: 1
+  Memory:
+    Limits: 2Gi
+    Request: 2Gi
+
+AppDynamics:
+  Enabled: false
+  ControllerHost: dh-test.saas.appdynamics.com
+  ControllerPort: 443
+  ControllerSSL: true
+  AccountName: DH-Test
+  AccountKey: aoyfh4o5pcw8
+  TierName: {{applicationName}}-AppD-Tier
+  NodeName: {{applicationName}}-AppD-Node
+  NodePrefix: {{applicationName}}-AppD
