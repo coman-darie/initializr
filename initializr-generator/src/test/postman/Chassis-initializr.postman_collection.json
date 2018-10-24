@@ -1,0 +1,116 @@
+{
+  "info": {
+    "_postman_id": "e1c790bd-1e75-404f-85d3-02d1a75f1026",
+    "name": "Chassis-initializr",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "{{host}}/chassis-starter.zip?type=maven-project&language=java&bootVersion=2.0.4.RELEASE&baseDir=chassis-starter&groupId=com.finastra.chassis&artifactId=chassis-starter&name=chassis-starter&description=Demo+project+for+Chassis+application&packageName=com.finastra.chassis.starter&packaging=jar&javaVersion=1.8&autocomplete=&generate-project=",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "a6ad52dd-5f4a-4227-a69b-c87ed3e014d1",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"Content-Type is application/zip\", function () {",
+              "   pm.response.to.be.header(\"Content-Type\", \"application/zip\");",
+              "});",
+              "pm.test(\"Content-Disposition contains attachment\", function () {",
+              "   pm.response.to.be.header(\"Content-Disposition\", \"attachment; filename=\\\"chassis-starter.zip\\\"\");",
+              "});",
+              "pm.test(\"Response contains string\", function () {",
+              "   pm.expect(pm.response.text()).to.include(\"src/main/java\");",
+              "});",
+              "pm.test(\"Response contains string\", function () {",
+              "   pm.expect(pm.response.text()).to.include(\"/src/main/resources\");",
+              "});",
+              "pm.test(\"Response contains string\", function () {",
+              "   pm.expect(pm.response.text()).to.include(\"/src/test/java\");",
+              "});",
+              "",
+              "",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{host}}/chassis-starter.zip?type=maven-project&language=java&bootVersion=2.0.4.RELEASE&baseDir=chassis-starter&groupId=com.finastra.chassis&artifactId=chassis-starter&name=chassis-starter&description=Demo+project+for+Chassis+application&packageName=com.finastra.chassis.starter&packaging=jar&javaVersion=1.8&autocomplete=&generate-project=",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "chassis-starter.zip"
+          ],
+          "query": [
+            {
+              "key": "type",
+              "value": "maven-project"
+            },
+            {
+              "key": "language",
+              "value": "java"
+            },
+            {
+              "key": "bootVersion",
+              "value": "2.0.4.RELEASE"
+            },
+            {
+              "key": "baseDir",
+              "value": "chassis-starter"
+            },
+            {
+              "key": "groupId",
+              "value": "com.finastra.chassis"
+            },
+            {
+              "key": "artifactId",
+              "value": "chassis-starter"
+            },
+            {
+              "key": "name",
+              "value": "chassis-starter"
+            },
+            {
+              "key": "description",
+              "value": "Demo+project+for+Chassis+application"
+            },
+            {
+              "key": "packageName",
+              "value": "com.finastra.chassis.starter"
+            },
+            {
+              "key": "packaging",
+              "value": "jar"
+            },
+            {
+              "key": "javaVersion",
+              "value": "1.8"
+            },
+            {
+              "key": "autocomplete",
+              "value": ""
+            },
+            {
+              "key": "generate-project",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
