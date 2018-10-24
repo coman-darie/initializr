@@ -1,11 +1,6 @@
-global:
-  Ingress:
-    BaseUrl: fc.dev-beta.fusionfabric.cloud
-    Class: fc-nginx
-
 Docker:
   RegistryUri: p21d11102018001.azurecr.io
-  Image: chassis/{{applicationName}}
+  Image: chassis/{{artifactId}}
   Tag: 12
 
 Deployment:
@@ -21,6 +16,6 @@ AppDynamics:
   ControllerSSL: true
   AccountName: DH-Test
   AccountKey: aoyfh4o5pcw8
-  TierName: {{applicationName}}-AppD-Tier
-  NodeName: {{applicationName}}-AppD-Node
-  NodePrefix: {{applicationName}}-AppD
+  TierName: {{artifactId}}-AppD-Tier
+  NodeName: {{artifactId}}-AppD-Node
+  NodePrefix: {{artifactId}}-AppD

@@ -2,8 +2,8 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    name: {{applicationName}}-dpl
-  name: {{applicationName}}-dpl
+    name: {{artifactId}}-dpl
+  name: {{artifactId}}-dpl
 spec:
   {{=<% %>=}}
   replicas: {{ .Values.Deployment.Replicas }}
@@ -12,10 +12,10 @@ spec:
     metadata:
       labels:
         <%={{ }}=%>
-        name: {{applicationName}}-dpl
+        name: {{artifactId}}-dpl
     spec:
       containers:
-      - name: {{applicationName}}-dpl
+      - name: {{artifactId}}-dpl
         {{=<% %>=}}
         image: "{{ .Values.Docker.RegistryUri }}/{{ .Values.Docker.Image }}:{{ .Values.Docker.Tag }}"
         imagePullPolicy: Always
