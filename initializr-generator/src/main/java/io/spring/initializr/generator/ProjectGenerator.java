@@ -294,6 +294,8 @@ public class ProjectGenerator {
 		templates.mkdirs();
 		write(new File(templates, "service.yaml"), "service.yaml", model);
 		write(new File(templates, "deployment.yaml"), "deployment.yaml", model);
+		write(new File(templates, "application-properties.yaml"),
+				"application-properties.yaml", model);
 
 		if (request.hasWebFacet()) {
 			new File(dir, "src/main/resources/templates").mkdirs();

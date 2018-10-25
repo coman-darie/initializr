@@ -205,7 +205,8 @@ public class ProjectAssert {
 				"src/main/resources/application.properties",
 				"src/main/resources/openapi.yaml", "Dockerfile", "charts/Chart.yaml",
 				"charts/.helmignore", "charts/values.yaml",
-				"charts/templates/service.yaml", "charts/templates/deployment.yaml");
+				"charts/templates/service.yaml", "charts/templates/deployment.yaml",
+				"charts/templates/application-properties.yaml");
 	}
 
 	public ProjectAssert isJavaWarProject(String expectedApplicationName) {
