@@ -21,8 +21,8 @@
 #    "java -Djava.security.egd=file:/dev/./urandom ${APPDYNAMICS_CONTROLLER_HOST_NAME:+$JAVA_AGENT} ${APPDYNAMICS_NODE_PREFIX:+-Dappdynamics.agent.reuse.nodeName=true -Dappdynamics.agent.reuse.nodeName.prefix=$APPDYNAMICS_NODE_PREFIX} -jar /app.jar" \
 #    ]
 #
-#ARG JAR_FILE=target/{{applicationName}}.jar
-#ADD ${JAR_FILE} {{applicationName}}.jar
+#ARG JAR_FILE=target/{{artifactId}}-*.jar
+#ADD ${JAR_FILE} {{artifactId}}.jar
 ###########End Dockerfile with AppDynamics integration###############
 ###########Start Dockerfile without AppDynamics integration##########
 FROM registry.misys.global.ad/ffdc-base/alpine-java:oraclejre-8
