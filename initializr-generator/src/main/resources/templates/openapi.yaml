@@ -4,7 +4,7 @@ info:
   description: |-
     Example for chassis-initializr swagger codegen
   version: "0.0.1"
-  title: "Chassis-initializr"
+  title: "{{artifactId}}"
 basePath: "/api/example"
 paths:
   /nodes/{nodeId}:

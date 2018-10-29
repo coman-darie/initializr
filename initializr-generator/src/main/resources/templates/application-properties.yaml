@@ -1,0 +1,20 @@
+apiVersion: v1
+data:
+  application.properties: |-
+#The default security configuration is inherited from chassis
+#For custom security configuration you can use
+#one or more of the following properties.
+#security.oauth2.resource.jwk.key-set-uri=
+#security.oauth2.resource.jwt.key-value=
+#security.oauth2.resource.jwt.key-uri=
+#ffdc.chassis.oauth2.issuer=
+
+ffdc.chassis.httpLogging.enabled=true
+ffdc.chassis.httpLogging.includeHeaders=false
+ffdc.chassis.httpLogging.includePayload=true
+ffdc.chassis.httpLogging.maxPayloadLength=10000
+ffdc.chassis.httpLogging.includeQueryString=true
+kind: ConfigMap
+metadata:
+  name: application.properties
+

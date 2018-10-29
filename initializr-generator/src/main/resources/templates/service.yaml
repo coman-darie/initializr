@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: {{artifactId}}-svc
+  name: {{artifactId}}-svc
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    name: {{artifactId}}-dpl
